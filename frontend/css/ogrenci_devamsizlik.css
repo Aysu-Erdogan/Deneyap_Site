@@ -1,0 +1,164 @@
+/* =========================================================
+   DERS LİSTESİ
+========================================================= */
+
+.ders-card{
+    min-height:650px;
+    border:none;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(36,59,107,.10);
+}
+
+.ders-listesi{
+    max-height:560px;
+    overflow-y:auto;
+}
+
+/* =========================================================
+   DERS SATIRLARI
+========================================================= */
+
+.list-group-item{
+    font-weight:600;
+    font-size:1.05rem;
+    padding:18px 22px;
+    transition:.25s;
+    cursor:pointer;
+    border:none;
+}
+
+.list-group-item:hover{
+    background:#eef3fb;
+    color:#243B6B;
+}
+
+.list-group-item.active{
+    background:#f39c12;
+    border-color:#f39c12;
+    color:#fff;
+}
+
+/* =========================================================
+   TÜM KARTLAR
+========================================================= */
+
+.card{
+    border:none;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(36,59,107,.10);
+}
+
+.card-header{
+
+    background:linear-gradient(90deg,#243B6B,#355A95) !important;
+    color:#fff !important;
+
+    font-size:1.15rem;
+    font-weight:700;
+
+    padding:16px 22px;
+
+    border:none;
+
+}
+
+/* =========================================================
+   ÖĞRENCİ BİLGİLERİ
+========================================================= */
+
+.ogrenci-card .card-body{
+    padding:25px 30px;
+}
+
+.ogrenci-card p{
+    font-size:1.05rem;
+    margin-bottom:14px;
+}
+
+.ogrenci-card strong{
+    color:#243B6B;
+    font-weight:700;
+}
+
+/* =========================================================
+   TABLO
+========================================================= */
+
+.table{
+    margin-bottom:0;
+}
+
+.table th{
+
+    background:#f5f7fb;
+    color:#243B6B;
+
+    font-size:1.05rem;
+    font-weight:700;
+
+}
+
+.table td,
+.table th{
+    vertical-align:middle;
+    padding:18px;
+}
+
+/* =========================================================
+   DEVAMSIZLIK DURUMLARI
+========================================================= */
+
+.durum-katildi{
+    color:#198754;
+    font-weight:700;
+}
+
+.durum-gelmedi{
+    color:#dc3545;
+    font-weight:700;
+}
+
+.durum-raporlu{
+    color:#ff9800;
+    font-weight:700;
+}
+
+/* GRAFİK */
+
+.grafik-card{
+    min-height:430px;
+}
+
+#devamsizlikChart{
+    width:220px !important;
+    height:220px !important;
+}
+
+.grafik-placeholder{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:320px;
+}
+
+.grafik-placeholder i{
+    font-size:90px;
+    color:#355A95;
+}
+
+.grafik-placeholder p{
+    margin-top:15px;
+    font-size:1rem;
+    color:#777;
+}
+
+/* BOŞLUKLAR */
+
+.dashboard-row{
+    margin-top:30px;
+}
+
+.dashboard-card{
+    margin-bottom:25px;
+}

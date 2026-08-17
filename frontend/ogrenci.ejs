@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Öğrenci Girişi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/ogrenci.css">
+    <link rel="stylesheet" href="/css/genel.css">
+  </head>
+  <body>
+    
+      <%- include("partials/navbar") %>
+
+    
+
+    <div class="container my-5">
+      <div class="row g-4">
+
+
+
+        <!-- Ders İçerikleri -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <a href="/ogrenci_ders" class="text-decoration-none">
+            <div
+              class="card login-card bg-student text-white text-center h-100 shadow border-0"
+            >
+              <div class="card-body py-4">
+                <i class="bi bi-bookshelf display-4 mb-3 d-block"></i>
+                <h5 class="card-title fw-bold">Ders İçerikleri</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Devamsızlık -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <a href="/ogrenci_devamsizlik" class="text-decoration-none">
+            <div
+              class="card login-card bg-parent text-white text-center h-100 shadow border-0"
+            >
+              <div class="card-body py-4">
+                <i class="bi bi-calendar-check-fill display-4 mb-3 d-block"></i>
+                <h5 class="card-title fw-bold">Devamsızlık Bilgisi</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- sertifikalar -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <a href="/sertifikalar" class="text-decoration-none">
+            <div
+              class="card login-card bg-teacher text-white text-center h-100 shadow border-0"
+            >
+              <div class="card-body py-4">
+                <i class="bi bi-award-fill display-4 mb-3 d-block"></i>
+                <h5 class="card-title fw-bold">Sertifikalar</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- sözlük -->
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <a href="/sozluk" class="text-decoration-none">
+            <div
+              class="card login-card bg-admin text-white text-center h-100 shadow border-0"
+            >
+              <div class="card-body py-4">
+                <i class="bi bi-book-half display-4 mb-3 d-block"></i>
+                <h5 class="card-title fw-bold">Sözlük</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <%- include("partials/footer") %>
+
+
+</html>

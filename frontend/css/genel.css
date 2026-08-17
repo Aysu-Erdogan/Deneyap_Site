@@ -1,0 +1,157 @@
+/* FOOTER  genel css */
+
+.footer-bg{
+    background-color:#1a1a2e;
+    padding:30px 0 15px;
+}
+
+.footer-logo{
+    height:50px;
+    width:auto;
+    mix-blend-mode:screen;
+    margin-bottom:12px;
+}
+
+.footer-text{
+    color:#6c757d;
+    line-height:1.7;
+    font-size:.88rem;
+    margin-bottom:1rem;
+}
+
+.footer-highlight{
+    color:#e74c3c;
+}
+
+/*  ------- SOSYAL MEDYA ----------- */
+
+.social-icon{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .2s, opacity .2s;
+    font-size:1rem;
+}
+
+.social-icon:hover{
+    transform:scale(1.15);
+    opacity:.9;
+}
+
+.nsosyal-logo{
+    width:38px;
+    height:38px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+/* Sosyal medya renkleri */
+
+.social-nsosyal{
+    background:linear-gradient(135deg,#00c6ff,#3b5bdb);
+    padding:0;
+    overflow:hidden;
+}
+
+.social-facebook{
+    background:#1877f2;
+}
+
+.social-x{
+    background:#000;
+}
+
+.social-instagram{
+    background:radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
+}
+
+.social-linkedin{
+    background:#0077b5;
+}
+
+.social-youtube{
+    background:#ff0000;
+}
+
+.social-telegram{
+    background:#0088cc;
+}
+
+/* FOOTER İLETİŞİM*/
+
+.footer-title{
+    color:#f39c12;
+    letter-spacing:2px;
+    margin-bottom:1rem;
+}
+
+.footer-icon{
+    color:#f39c12;
+    font-size:.95rem;
+    flex-shrink:0;
+}
+
+.footer-text{
+    color:#6c757d;
+    font-size:.88rem;
+    line-height:1.7;
+}
+
+.footer-mail{
+    color:#f39c12;
+    font-size:.88rem;
+}
+
+.footer-mail:hover{
+    color:#f8b739;
+}
+
+/* FOOTER ALT KISIM */
+
+.footer-divider{
+    border-color:#333;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.footer-copyright{
+    color:#6c757d;
+    font-size:.8rem;
+}
+
+.footer-link{
+    color:#6c757d;
+    font-size:.8rem;
+    transition:.2s;
+}
+
+.footer-link:hover{
+    color:#ffffff;
+}
+
+/* Geri Butonu */
+
+.geri-btn-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.geri-btn{
+    padding: 10px 22px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    transition: all .2s ease;
+}
+
+.geri-btn:hover{
+    transform: translateX(-4px);
+}

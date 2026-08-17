@@ -1,0 +1,50 @@
+html, body {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body > footer {
+  margin-top: auto;
+}
+
+/* Giriş kartı */
+.login-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+    height: 200px;
+}
+
+.login-card:hover {
+    transform: scale(1.05);
+}
+
+/* kart1 renk */
+.bg-student {
+    background-color: #f39c12;
+}
+
+
+
+/* kart2 renk */
+.bg-parent {
+    background-color: #e74c3c;
+}
+
+
+/* kart3 renk */
+.bg-teacher {
+    background-color: #e84393;
+}
+
+
+
+/* kart4 renk */
+.bg-admin {
+    background-color: #9b59b6;
+}
+
+

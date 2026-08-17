@@ -1,0 +1,312 @@
+/* ==========================================================
+   SERTİFİKA COVERFLOW
+========================================================== */
+
+.certificate-section{
+    overflow:visible;
+}
+
+.certificate-section h2{
+    font-weight:700;
+    margin-bottom:50px;
+}
+
+.coverflow{
+    position:relative;
+    width:100%;
+    height:650px;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Kartların bulunduğu alan */
+
+.coverflow-track{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+}
+
+/* Kart */
+
+.certificate-card{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:330px;
+
+    height:500px;
+
+    background:white;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transform-origin:center;
+
+    transform-style:preserve-3d;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+    transition:
+        transform .6s,
+        opacity .6s,
+        filter .6s,
+        box-shadow .4s;
+
+    cursor:pointer;
+}
+
+/* Resim */
+
+.card-image{
+
+    height:230px;
+
+    overflow:hidden;
+}
+
+.card-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    transition:.45s;
+}
+
+/* İçerik */
+
+.card-content{
+
+    padding:22px;
+}
+
+.card-content h3{
+
+    margin-top:15px;
+
+    font-size:24px;
+
+    font-weight:700;
+}
+
+.card-content p{
+
+    color:#666;
+}
+
+.card-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+    font-size:14px;
+
+    color:#777;
+}
+
+/* Hover */
+
+.center:hover{
+
+    transform:translateY(-12px) scale(1.02);
+
+    box-shadow:0 30px 60px rgba(0,0,0,.18);
+}
+
+.center:hover img{
+
+    transform:scale(1.08);
+}
+
+/* ==========================================================
+   COVERFLOW EFEKTİ
+========================================================== */
+
+/* Ortadaki */
+
+.center{
+
+    transform:
+        translate(-50%,-50%)
+        translateX(0)
+        scale(1);
+
+    opacity:1;
+
+    filter:none;
+
+    z-index:30;
+}
+
+/* Sol */
+
+.left{
+
+    transform:
+        translate(-50%,-50%)
+        translateX(-300px)
+        scale(.82)
+        rotateY(25deg);
+
+    opacity:.45;
+
+    filter:blur(2px);
+
+    z-index:20;
+}
+
+/* Sağ */
+
+.right{
+
+    transform:
+        translate(-50%,-50%)
+        translateX(300px)
+        scale(.82)
+        rotateY(-25deg);
+
+    opacity:.45;
+
+    filter:blur(2px);
+
+    z-index:20;
+}
+
+/* Diğer kartlar */
+
+.hidden-card{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.55);
+
+    opacity:0;
+
+    filter:blur(5px);
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+/* ==========================================================
+   OKLAR
+========================================================== */
+
+.cover-btn{
+
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    font-size:28px;
+
+    transition:background .3s, color .3s;
+    z-index:50; /* ensure buttons are above cards and receive clicks */
+    cursor:pointer;
+}
+
+.cover-btn.prev{
+    left:12px;
+}
+
+.cover-btn.next{
+    right:12px;
+}
+
+.cover-btn:hover{
+
+    background:#0d6efd;
+
+    color:white;
+}
+
+/* ==========================================================
+   DOTLAR
+========================================================== */
+
+.coverflow-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+    gap:10px;
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#cfcfcf;
+
+    transition:.3s;
+}
+
+.dot.active{
+
+    background:#0d6efd;
+
+    width:28px;
+
+    border-radius:20px;
+}
+
+/* ==========================================================
+   MOBİL
+========================================================== */
+
+@media(max-width:992px){
+
+    .left,
+    .right{
+
+        display:none;
+    }
+
+    .certificate-card{
+
+        width:320px;
+    }
+
+}

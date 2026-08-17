@@ -3,6 +3,7 @@ const path = require("path");
 
 const app = express();
 const port = 5000;
+const db = require('./db');
 
 // EJS ayarları
 app.set("view engine", "ejs");
@@ -10,6 +11,8 @@ app.set("views", path.join(__dirname, "../frontend"));
 
 // Statik dosyalar (CSS, JS, resimler)
 app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Ana Sayfa
 app.get("/", (req, res) => {
@@ -59,7 +62,47 @@ app.get("/sozluk", (req, res) => {
 
 
 
+// Hata Sayfası
+app.get("/hata", (req, res) => {
+    res.render("hata");
+});
+
+const crypto = require('crypto');
+app.post('/api/login', (req, res) => {
+    const { email, sifre, role } = req.body;
+    const hash = crypto.createHash('sha256').update(sifre).digest('hex');
+
+    db.query('SELECT * FROM kullanicilar WHERE email = ?', [email], (err, results) => {
+        if (err || results.length === 0) {
+            return res.status(401).json({ error: 'Yanlış e-posta veya şifre' });
+        }
+        
+        const user = results[0];
+        // Kullanıcı tablosundaki şifre hash'i ile eşleşirse giriş yaptır
+        if (user.sifre_hash === hash) {
+            return res.json({ success: true, redirect: '/' + role });
+        } else {
+            return res.status(401).json({ error: 'Yanlış e-posta veya şifre' });
+        }
+    });
+});
+
 // Sunucu
 app.listen(port, () => {
     console.log(`Sunucu http://localhost:${port} adresinde çalışıyor.`);
+});
+
+app.get('/test-db', (req, res) => {
+
+    db.query('SELECT * FROM kullanicilar', (err, results) => {
+
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Veritabanı sorgusunda hata oluştu.');
+        }
+
+        res.json(results);
+
+    });
+
 });

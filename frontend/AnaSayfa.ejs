@@ -150,7 +150,7 @@
 
             <!-- Öğrenci Girişi -->
             <div class="col-sm-6">
-              <a href="/ogrenci" class="text-decoration-none">
+              <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#studentLoginModal">
                 <div
                   class="card text-white text-center h-100 shadow border-0"
                   style="background-color: #f39c12; transition: transform 0.2s"
@@ -171,7 +171,7 @@
 
             <!-- Veli Girişi -->
             <div class="col-sm-6">
-              <a href="/veli" class="text-decoration-none">
+              <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#veliLoginModal">
                 <div
                   class="card text-white text-center h-100 shadow border-0"
                   style="background-color: #e74c3c; transition: transform 0.2s"
@@ -190,7 +190,7 @@
 
             <!-- Eğitmen Girişi -->
             <div class="col-sm-6">
-              <a href="/egitmen" class="text-decoration-none">
+              <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#egitmenLoginModal">
                 <div
                   class="card text-white text-center h-100 shadow border-0"
                   style="background-color: #e84393; transition: transform 0.2s"
@@ -212,7 +212,7 @@
 
             <!-- Yönetici Girişi -->
             <div class="col-sm-6">
-              <a href="/yonetici" class="text-decoration-none">
+              <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#yoneticiLoginModal">
                 <div
                   class="card text-white text-center h-100 shadow border-0"
                   style="background-color: #9b59b6; transition: transform 0.2s"
@@ -228,6 +228,54 @@
                 </div>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Öğrenci Girişi Modalı -->
+    <div class="modal fade" id="studentLoginModal" tabindex="-1" aria-labelledby="studentLoginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+          <div class="modal-body p-0 text-center" style="position: relative;">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 10px; top: 10px; z-index: 1050; background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 10px;"></button>
+            <iframe src="/creative_login/login.html" style="width: 100%; height: 600px; border: none; border-radius: 15px; background-color: #FAF9F6; overflow: hidden;" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Veli Girişi Modalı -->
+    <div class="modal fade" id="veliLoginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+          <div class="modal-body p-0 text-center" style="position: relative;">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 10px; top: 10px; z-index: 1050; background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 10px;"></button>
+            <iframe src="/giris_ekranlari/login.html?role=veli" style="width: 100%; height: 600px; border: none; border-radius: 15px; overflow: hidden;" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eğitmen Girişi Modalı -->
+    <div class="modal fade" id="egitmenLoginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+          <div class="modal-body p-0 text-center" style="position: relative;">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 10px; top: 10px; z-index: 1050; background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 10px;"></button>
+            <iframe src="/giris_ekranlari/login.html?role=egitmen" style="width: 100%; height: 600px; border: none; border-radius: 15px; overflow: hidden;" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Yönetici Girişi Modalı -->
+    <div class="modal fade" id="yoneticiLoginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+          <div class="modal-body p-0 text-center" style="position: relative;">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 10px; top: 10px; z-index: 1050; background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 10px;"></button>
+            <iframe src="/giris_ekranlari/login.html?role=yonetici" style="width: 100%; height: 600px; border: none; border-radius: 15px; overflow: hidden;" scrolling="no"></iframe>
           </div>
         </div>
       </div>

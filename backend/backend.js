@@ -21,7 +21,12 @@ app.use(session({
     secret: 'deneyap-gizli-anahtar',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 2 } // 2 saat
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 2, // 2 saat
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: false // localhost development için
+    }
 }));
 
 // Session kontrolü middleware
@@ -55,11 +60,15 @@ app.get("/egitmen", oturumKontrol, (req, res) => {
 // Yönetici
 app.get("/yonetici", oturumKontrol, (req, res) => {
     const kullanici_id = req.session.kullanici_id;
+    
+    // Debug log
+    console.log('[DEBUG YONETICI] SessionID:', req.sessionID, 'kullanici_id:', req.session.kullanici_id, 'Cookie header:', req.headers.cookie);
+    
     const sorgu = 'SELECT ad, soyad, email, telefon FROM kullanicilar WHERE kullanici_id = ?';
     
     db.query(sorgu, [kullanici_id], (err, results) => {
         if (err || results.length === 0) {
-            console.error('Yönetici bilgisi alınamadı:', err);
+            console.error('Yönetici bilgisi alınamadı:', err, 'kullanici_id:', kullanici_id);
             return res.redirect('/hata');
         }
         
@@ -200,7 +209,19 @@ app.post('/api/login', (req, res) => {
             // Session'a kullanici_id kaydet
             req.session.kullanici_id = user.kullanici_id;
             req.session.rol_id = user.rol_id;
-            return res.json({ success: true, redirect: '/' + role });
+            
+            // Debug log
+            console.log('[DEBUG LOGIN] SessionID:', req.sessionID, 'kullanici_id:', req.session.kullanici_id, 'rol_id:', req.session.rol_id);
+            
+            // Session'ı zorla kaydet
+            req.session.save((err) => {
+                if (err) {
+                    console.error('[DEBUG LOGIN] Session save error:', err);
+                } else {
+                    console.log('[DEBUG LOGIN] Session saved, cookie will be set');
+                }
+                return res.json({ success: true, redirect: '/' + role });
+            });
         } else {
             return res.status(401).json({ error: 'Yanlış e-posta veya şifre' });
         }

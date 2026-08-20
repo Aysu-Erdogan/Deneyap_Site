@@ -1,0 +1,217 @@
+/* Admin Panel - Inter Font Family */
+.admin-content-area,
+.admin-magic-nav,
+.profile-card,
+.sinif-yonetim-kart,
+.sinif-detay-kart,
+.kontenjan-uyari,
+.sinif-kart,
+.ogrenci-kart,
+.ders-kart,
+.tab-content {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Font weight utilities for Inter */
+.fw-400 { font-weight: 400 !important; }
+.fw-500 { font-weight: 500 !important; }
+.fw-600 { font-weight: 600 !important; }
+.fw-700 { font-weight: 700 !important; }
+
+.admin-content-area {
+	flex: 1;
+	margin-left: 30px;
+	margin-right: 30px;
+	background-color: #fff;
+	border-radius: 28px;
+	box-shadow: 0 18px 50px rgba(20, 28, 35, 0.12);
+	padding: 30px;
+	min-height: 500px;
+}
+.profile-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: .25rem;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+.profile-card-body {
+	flex: 1 1 auto;
+	min-height: 1px;
+	padding: 1.5rem;
+}
+.profile-gutters-sm {
+	margin-right: -8px;
+	margin-left: -8px;
+}
+.profile-gutters-sm>.col, .profile-gutters-sm>[class*=col-] {
+	padding-right: 8px;
+	padding-left: 8px;
+}
+/* Devamsızlık Kartları */
+.sinif-kart, .ogrenci-kart {
+	background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+	border: 2px solid #e0e0e0;
+	border-radius: 16px;
+	padding: 20px;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.sinif-kart:hover, .ogrenci-kart:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	border-color: #d0d0d0;
+}
+.sinif-kart-ikon, .ogrenci-kart-ikon {
+	font-size: 2.5rem;
+	margin-bottom: 12px;
+}
+.sinif-kart-isim, .ogrenci-kart-isim {
+	font-weight: 600;
+	font-size: 1.05rem;
+	color: #1f2937;
+	margin: 0;
+}
+/* Ders Kartları */
+.ders-kart {
+	background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+	border: 2px solid #e0e0e0;
+	border-radius: 16px;
+	padding: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+.ders-kart-isim {
+	font-weight: 700;
+	font-size: 1.1rem;
+	color: #1f2937;
+	margin-bottom: 15px;
+}
+.ders-grafik-container {
+	position: relative;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Sınıf Yönetim Kartları */
+.sinif-yonetim-kart {
+	background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+	border: 1px solid #e9ecef;
+	border-radius: 16px;
+	transition: all 0.3s ease;
+}
+.sinif-yonetim-kart:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	border-color: #dee2e6;
+}
+.sinif-yonetim-kart .card-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #1f2937;
+}
+
+/* Atölye ismi - Normal metin olarak görünüm */
+.sinif-atolye {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #1f2937;
+    background: none;
+    border: none;
+    padding: 0;
+}
+.sinif-atolye:hover {
+    color: #3b5bdb;
+    text-decoration: none;
+}
+
+.sinif-yonetim-kart .progress {
+	border-radius: 4px;
+	background-color: #e9ecef;
+}
+.sinif-yonetim-kart .progress-bar {
+	border-radius: 4px;
+	transition: width 0.3s ease;
+}
+
+/* Kontenjan Uyarı Stili */
+.kontenjan-uyari {
+	background-color: #fff3cd;
+	border: 1px solid #ffc107;
+	border-radius: 8px;
+	padding: 12px;
+	margin-bottom: 16px;
+	font-size: 0.875rem;
+	color: #856404;
+}
+.kontenjan-uyari.danger {
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	color: #721c24;
+}
+.kontenjan-uyari i {
+	margin-right: 8px;
+}
+
+/* Sınıf Detay Modal */
+.sinif-detay-kart {
+	background: #f8f9fa;
+	border-radius: 12px;
+	padding: 20px;
+	text-align: center;
+	border: 1px solid #e9ecef;
+}
+.sinif-detay-kart h3 {
+	font-size: 2rem;
+	font-weight: 700;
+	margin: 8px 0 0;
+}
+.sinif-detay-kart h6 {
+	font-size: 0.85rem;
+	color: #6c757d;
+	margin: 0;
+}
+
+/* ============================================================
+   YENİ EKLE BUTONLARI - Özel Mavi Renk Standardı
+   Normal: #5e7fdc | Hover: #3b5bdb | Text: #ffffff | Weight: 500
+   ============================================================ */
+.btn-yeni-ekle {
+    background-color: #5e7fdc !important;
+    border-color: #5e7fdc !important;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-yeni-ekle:hover,
+.btn-yeni-ekle:focus,
+.btn-yeni-ekle:active {
+    background-color: #3b5bdb !important;
+    border-color: #3b5bdb !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(94, 127, 220, 0.3);
+}
+
+.btn-yeni-ekle:disabled {
+    background-color: #9db2e8 !important;
+    border-color: #9db2e8 !important;
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Ensure the icon inside button also gets white color */
+.btn-yeni-ekle i {
+    color: #ffffff !important;
+}

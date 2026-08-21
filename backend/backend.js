@@ -270,11 +270,10 @@ app.get('/api/veliler/dropdown', oturumKontrol, (req, res) => {
     });
 });
 
-// GET /api/ogrenciler
+// GET /api/ogrenciler - Sadece aktif öğrenciler
 app.get('/api/ogrenciler', oturumKontrol, (req, res) => {
-    const aktifMi = req.query.aktif_mi !== undefined ? parseInt(req.query.aktif_mi) : 1;
     const sorgu = `
-        SELECT o.ogrenci_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.aktif_mi,
+        SELECT o.ogrenci_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no,
                s.sinif_id, s.sinif_adi, o.okul, o.sinif_seviyesi,
                v.veli_id, vk.ad AS veli_ad, vk.soyad AS veli_soyad
         FROM ogrenciler o
@@ -282,9 +281,9 @@ app.get('/api/ogrenciler', oturumKontrol, (req, res) => {
         LEFT JOIN siniflar s ON s.sinif_id = o.sinif_id
         LEFT JOIN veliler v ON v.veli_id = o.veli_id
         LEFT JOIN kullanicilar vk ON vk.kullanici_id = v.kullanici_id
-        WHERE k.aktif_mi = ?
+        WHERE k.aktif_mi = 1
     `;
-    db.query(sorgu, [aktifMi], (err, results) => {
+    db.query(sorgu, (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Veritabanı hatası' });
@@ -509,21 +508,20 @@ app.put('/api/ogrenciler/sil', oturumKontrol, (req, res) => {
 // EĞİTMEN YÖNETİMİ
 // ==============================
 
-// GET /api/egitmenler
+// GET /api/egitmenler - Sadece aktif eğitmenler
 app.get('/api/egitmenler', oturumKontrol, (req, res) => {
-    const aktifMi = req.query.aktif_mi !== undefined ? parseInt(req.query.aktif_mi) : 1;
     const sorgu = `
-        SELECT e.egitmen_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no, k.aktif_mi,
+        SELECT e.egitmen_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no,
                GROUP_CONCAT(se.sinif_id) as sinif_id_list,
                GROUP_CONCAT(s.sinif_adi SEPARATOR ', ') as siniflar
         FROM egitmenler e
         JOIN kullanicilar k ON k.kullanici_id = e.kullanici_id
         LEFT JOIN sinifegitmenleri se ON se.egitmen_id = e.egitmen_id
         LEFT JOIN siniflar s ON s.sinif_id = se.sinif_id
-        WHERE k.aktif_mi = ?
-        GROUP BY e.egitmen_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no, k.aktif_mi
+        WHERE k.aktif_mi = 1
+        GROUP BY e.egitmen_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no
     `;
-    db.query(sorgu, [aktifMi], (err, results) => {
+    db.query(sorgu, (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Veritabanı hatası' });
@@ -680,12 +678,10 @@ app.put('/api/egitmenler/pasif-yap', oturumKontrol, (req, res) => {
 // VELİ YÖNETİMİ
 // ==============================
 
-// GET /api/veliler - Veli listesi + bağlı öğrenciler
+// GET /api/veliler - Veli listesi + bağlı öğrenciler (sadece aktif)
 app.get('/api/veliler', oturumKontrol, (req, res) => {
-    const aktifMi = req.query.aktif_mi !== undefined ? parseInt(req.query.aktif_mi) : 1;
-
     const sorgu = `
-        SELECT v.veli_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no, k.aktif_mi,
+        SELECT v.veli_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no,
                GROUP_CONCAT(
                    CONCAT(ok.ad, ' ', ok.soyad) 
                    ORDER BY ok.ad SEPARATOR '||'
@@ -696,10 +692,10 @@ app.get('/api/veliler', oturumKontrol, (req, res) => {
         JOIN kullanicilar k ON k.kullanici_id = v.kullanici_id
         LEFT JOIN ogrenciler o ON o.veli_id = v.veli_id
         LEFT JOIN kullanicilar ok ON ok.kullanici_id = o.kullanici_id
-        WHERE k.aktif_mi = ?
-        GROUP BY v.veli_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no, k.aktif_mi
+        WHERE k.aktif_mi = 1
+        GROUP BY v.veli_id, k.kullanici_id, k.ad, k.soyad, k.email, k.telefon, k.tc_no
     `;
-    db.query(sorgu, [aktifMi], (err, results) => {
+    db.query(sorgu, (err, results) => {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: 'Veritabanı hatası' });

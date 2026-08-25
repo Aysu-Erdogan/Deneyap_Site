@@ -1,0 +1,162 @@
+
+:root {
+    --sidebar-bg: #e8f6ff;
+    --sidebar-accent: #ff9f43;
+    --sidebar-item-hover: #ffd8a8;
+    --main-bg: #f0f9ff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --card-bg: #ffffff;
+    --border-color: #cbd5e1;
+}
+
+body.egitmen-body {
+    margin: 0;
+    background-color: var(--main-bg);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.egitmen-page-wrap {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.teacher-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, var(--sidebar-bg) 0%, #ffffff 100%);
+    border-right: 1px solid var(--border-color);
+    padding: 24px 0;
+}
+
+.sidebar-logo { text-align: center; margin-bottom: 40px; padding: 0 20px; }
+.sidebar-logo img { max-height: 50px; mix-blend-mode: multiply; }
+.sidebar-nav { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav li { margin: 0 20px; }
+.sidebar-nav a { display: flex; align-items: center; padding: 14px 24px; color: var(--text-primary); text-decoration: none; border-radius: 12px; margin-bottom: 8px; transition: all 0.3s ease; position: relative; }
+.sidebar-nav a:hover { background: rgba(255, 159, 67, 0.15); color: var(--sidebar-accent); }
+.sidebar-nav a.active { background: rgba(255, 159, 67, 0.2); color: var(--sidebar-accent); }
+.sidebar-nav a.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--sidebar-accent); border-radius: 0 4px 4px 0; }
+.sidebar-nav a .bi { width: 20px; margin-right: 16px; font-size: 1.2rem; }
+.teacher-main { flex-grow: 1; padding: 32px 40px; background-color: var(--main-bg); width: calc(100% - 260px); }
+.page-header { margin-bottom: 32px; }
+.page-header h1 { font-size: 24px; font-weight: 600; margin: 0; color: var(--text-primary); }
+.page-header p { color: var(--text-secondary); margin: 8px 0 0; font-size: 14px; }
+.teacher-card { background: var(--card-bg); border-radius: 16px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04); border: 1px solid var(--border-color); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+.card-header h3 { font-size: 18px; font-weight: 500; margin: 0; color: var(--text-primary); }
+.teacher-table { width: 100%; border-collapse: collapse; }
+.teacher-table th, .teacher-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border-color); }
+.teacher-table th { font-size: 12px; text-transform: uppercase; font-weight: 500; color: var(--text-secondary); }
+.teacher-table td { font-size: 14px; }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+
+/* Profil Karti Ozel */
+.profil-avatar-row { display: flex; align-items: center; gap: 20px; }
+.profil-avatar { width: 60px; height: 60px; background: var(--sidebar-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.profil-rol-badge { background: #e8f6ff; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.profil-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; display: block; }
+.profil-value { font-size: 15px; font-weight: 500; color: var(--text-primary); }
+.btn-egitmen-duzenle, .btn-egitmen-kaydet { background: var(--sidebar-accent); color: white; border: none; border-radius: 8px; padding: 8px 16px; transition: 0.2s; }
+.btn-egitmen-duzenle:hover, .btn-egitmen-kaydet:hover { background: #e68a3e; color: white; }
+.btn-egitmen-iptal { background: #e2e8f0; color: #475569; border: none; border-radius: 8px; padding: 8px 16px; transition: 0.2s; }
+.btn-egitmen-iptal:hover { background: #cbd5e1; }
+
+/* Profil butonu Header'da */
+.header-profil-btn { display: flex; align-items: center; gap: 8px; background: rgba(255, 159, 67, 0.1); color: var(--sidebar-accent); border: 1px solid rgba(255, 159, 67, 0.3); border-radius: 8px; padding: 6px 12px; font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; margin-right: 15px; }
+.header-profil-btn:hover { background: rgba(255, 159, 67, 0.2); color: var(--sidebar-accent); }
+
+
+/* Dashboard Ozel */
+.dashboard-hero {
+    position: relative;
+    background-color: var(--main-bg);
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.dot-pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(#64748b 2px, transparent 2px);
+    background-size: 24px 24px;
+    opacity: 0.15;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+.highlight-blue { color: #0284c7; }
+.highlight-orange { color: var(--sidebar-accent); }
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.dashboard-stat-card {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    height: 100%;
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.blue-icon { background: #e0f2fe; color: #0284c7; }
+.orange-icon { background: #ffedd5; color: #ea580c; }
+.green-icon { background: #dcfce7; color: #16a34a; }
+
+.stat-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: var(--text-primary);
+}
+
+.stat-info p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+/* Sidebar padding adjustment now that logo is gone */
+.teacher-sidebar {
+    padding-top: 32px;
+}

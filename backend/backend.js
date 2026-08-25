@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const crypto = require('crypto');
 const session = require('express-session');
+const egitmenRouter = require('./egitmen');
 
 const app = express();
 const port = 5000;
@@ -52,10 +53,8 @@ app.get("/veli", oturumKontrol, (req, res) => {
     res.render("veli", { showLogout: true });
 });
 
-// Eğitmen
-app.get("/egitmen", oturumKontrol, (req, res) => {
-    res.render("egitmen", { showLogout: true });
-});
+// Eğitmen - using router from backend/egitmen.js
+app.use("/egitmen", egitmenRouter);
 
 // Yönetici
 app.get("/yonetici", oturumKontrol, (req, res) => {

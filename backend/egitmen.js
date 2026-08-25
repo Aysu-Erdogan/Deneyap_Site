@@ -1,14 +1,9 @@
-
 const express = require('express');
 const router = express.Router();
 const db = require('./db');
+const { oturumKontrol, rolKontrol } = require('./middleware/auth');
 
-function oturumKontrol(req, res, next) {
-    if (!req.session.kullanici_id) return res.redirect('/');
-    next();
-}
-
-router.get('/', oturumKontrol, (req, res) => {
+router.get('/', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     db.query('SELECT ad FROM kullanicilar WHERE kullanici_id = ?', [kullanici_id], (err, results) => {
         if (err || results.length === 0) {
@@ -18,7 +13,7 @@ router.get('/', oturumKontrol, (req, res) => {
     });
 });
 
-router.get('/api/profil', oturumKontrol, (req, res) => {
+router.get('/api/profil', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     db.query('SELECT ad, soyad, email, telefon FROM kullanicilar WHERE kullanici_id = ?', [kullanici_id], (err, results) => {
         if (err || results.length === 0) {
@@ -28,7 +23,7 @@ router.get('/api/profil', oturumKontrol, (req, res) => {
     });
 });
 
-router.put('/api/profil', oturumKontrol, (req, res) => {
+router.put('/api/profil', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     const { ad, soyad, email, telefon } = req.body;
     
@@ -45,7 +40,7 @@ router.put('/api/profil', oturumKontrol, (req, res) => {
 
 
 // API: Dashboard Istatistikleri
-router.get('/api/dashboard-stats', oturumKontrol, (req, res) => {
+router.get('/api/dashboard-stats', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     
     // Varsayilan degerler
@@ -89,7 +84,7 @@ router.get('/api/dashboard-stats', oturumKontrol, (req, res) => {
 // ================= DEVAMSIZLIK & YOKLAMA SISTEMI =================
 
 // Eğitmene atanan sınıfları getir
-router.get('/api/siniflarim', oturumKontrol, (req, res) => {
+router.get('/api/siniflarim', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     
     // Once egitmen_id bul
@@ -125,7 +120,7 @@ router.get('/api/siniflarim', oturumKontrol, (req, res) => {
 });
 
 // Sınıfın geçerli yoklama tarihlerini getir (Egitim baslangicindan itibaren hafta_sayisi kadar)
-router.get('/api/yoklama-tarihleri/:sinif_id', oturumKontrol, (req, res) => {
+router.get('/api/yoklama-tarihleri/:sinif_id', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const { sinif_id } = req.params;
     const kullanici_id = req.session.kullanici_id;
 
@@ -168,7 +163,7 @@ router.get('/api/yoklama-tarihleri/:sinif_id', oturumKontrol, (req, res) => {
 });
 
 // Tarih secildiginde ogrencileri ve o tarihteki mevcut yoklamalari getir
-router.get('/api/yoklama-ogrenciler/:sinif_id/:tarih', oturumKontrol, (req, res) => {
+router.get('/api/yoklama-ogrenciler/:sinif_id/:tarih', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const { sinif_id, tarih } = req.params;
     const kullanici_id = req.session.kullanici_id;
 
@@ -195,7 +190,7 @@ router.get('/api/yoklama-ogrenciler/:sinif_id/:tarih', oturumKontrol, (req, res)
 });
 
 // Yoklamayi kaydet
-router.post('/api/yoklama-kaydet', oturumKontrol, (req, res) => {
+router.post('/api/yoklama-kaydet', oturumKontrol, rolKontrol([3, 4]), (req, res) => {
     const kullanici_id = req.session.kullanici_id;
     const { sinif_id, egitim_id, hafta_no, tarih, yoklamalar } = req.body;
 
@@ -241,4 +236,3 @@ router.post('/api/yoklama-kaydet', oturumKontrol, (req, res) => {
 });
 
 module.exports = router;
-
